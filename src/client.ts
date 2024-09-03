@@ -1,12 +1,11 @@
 import { SapphireClient } from '@sapphire/framework'
-import '@sapphire/plugin-hmr/register'
 import { ReportQueue } from './services/report-queue.js'
 import { PrismaClient } from '@prisma/client'
 
 export class KirinoClient extends SapphireClient {
 	private readonly _token: string
 	private prisma: PrismaClient
-	private reportQueue: ReportQueue
+	reportQueue: ReportQueue
 
 	public constructor({ token }: { token: string }) {
 		super({
@@ -20,5 +19,11 @@ export class KirinoClient extends SapphireClient {
 		this.prisma = new PrismaClient()
 		this.reportQueue = new ReportQueue(this.prisma)
 		return super.login(this._token)
+	}
+}
+
+declare module '@sapphire/pieces' {
+	interface Container {
+		reportQueue: ReportQueue
 	}
 }
