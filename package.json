@@ -14,6 +14,8 @@
 	"author": "Abiria",
 	"license": "ISC",
 	"dependencies": {
+		"@prisma/client": "^5.19.1",
+		"@sapphire/decorators": "^6.1.0",
 		"@sapphire/discord.js-utilities": "^7.3.0",
 		"@sapphire/framework": "^5.2.1",
 		"discord.js": "^14.15.3"
