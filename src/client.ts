@@ -1,11 +1,12 @@
-import { SapphireClient } from '@sapphire/framework'
+import {
+	container,
+	SapphireClient,
+} from '@sapphire/framework'
 import { ReportQueue } from './services/report-queue.js'
 import { PrismaClient } from '@prisma/client'
 
 export class KirinoClient extends SapphireClient {
 	private readonly _token: string
-	private prisma: PrismaClient
-	reportQueue: ReportQueue
 
 	public constructor({ token }: { token: string }) {
 		super({
@@ -16,14 +17,17 @@ export class KirinoClient extends SapphireClient {
 	}
 
 	public override async login() {
-		this.prisma = new PrismaClient()
-		this.reportQueue = new ReportQueue(this.prisma)
+		container.prisma = new PrismaClient()
+		container.reportQueue = new ReportQueue(
+			container.prisma,
+		)
 		return super.login(this._token)
 	}
 }
 
 declare module '@sapphire/pieces' {
 	interface Container {
+		prisma: PrismaClient
 		reportQueue: ReportQueue
 	}
 }
