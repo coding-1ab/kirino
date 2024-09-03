@@ -22,11 +22,13 @@
 	},
 	"devDependencies": {
 		"@sapphire/cli": "^1.9.3",
+		"@sapphire/pieces": "^4.3.1",
 		"@sapphire/plugin-hmr": "^3.0.1",
 		"@swc/cli": "^0.4.0",
 		"@swc/core": "^1.7.22",
 		"@types/node": "^22.5.2",
 		"chokidar": "^3.6.0",
+		"dotenv": "^16.4.5",
 		"prisma": "^5.19.1",
 		"tsx": "^4.19.0",
 		"typescript": "^5.5.4"
